@@ -1,4 +1,4 @@
-# Modern Zsh Configuration
+# Zsh
 
 A comprehensive Zsh configuration featuring modern tooling, beautiful theming, and enhanced productivity features.
 
@@ -19,70 +19,25 @@ A comprehensive Zsh configuration featuring modern tooling, beautiful theming, a
 
 Before installing this configuration, ensure you have the following software installed:
 
-#### 1. Homebrew (macOS Package Manager)
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
+#### 1. Git
+Git is required for cloning repositories and plugin management.
+- **Installation**: Follow the official installation guide at [git-scm.com](https://git-scm.com/downloads)
 
-#### 2. Git
-```bash
-brew install git
-```
+#### 2. FZF (Fuzzy Finder)
+FZF provides fuzzy finding capabilities for enhanced command completion and history search.
+- **Installation**: See installation instructions at [github.com/junegunn/fzf](https://github.com/junegunn/fzf#installation)
 
-#### 3. FZF (Fuzzy Finder)
-```bash
-brew install fzf
-```
-
-#### 4. Zoxide (Smart cd replacement)
-```bash
-brew install zoxide
-```
-
-#### 5. Optional Development Tools
-The configuration includes PATH settings for these optional tools:
-
-- **Cursor IDE**: Download from [cursor.sh](https://cursor.sh)
-- **Ollama AI**: Download from [ollama.ai](https://ollama.ai)
-- **PHP 8.3**: `brew install php@8.3`
+#### 3. Zoxide (Smart cd replacement)
+Zoxide enables intelligent directory jumping based on frecency (frequency + recency).
+- **Installation**: Follow the installation guide at [github.com/ajeetdsouza/zoxide](https://github.com/ajeetdsouza/zoxide#installation)
 
 ### Required Nerd Font
 
 This configuration uses Powerlevel10k which requires a **Nerd Font** for proper icon display.
 
-#### Recommended Fonts:
-- **MesloLGS NF** (Recommended by Powerlevel10k)
-- **JetBrains Mono Nerd Font**
-- **Fira Code Nerd Font**
-- **Hack Nerd Font**
-
-#### Installation Options:
-
-**Option 1: Homebrew (Recommended)**
-```bash
-# Install MesloLGS NF (recommended)
-brew tap homebrew/cask-fonts
-brew install font-meslo-lg-nerd-font
-
-# Or install JetBrains Mono Nerd Font
-brew install font-jetbrains-mono-nerd-font
-```
-
-**Option 2: Manual Download**
-1. Visit [Nerd Fonts Releases](https://github.com/ryanoasis/nerd-fonts/releases)
-2. Download your preferred font (e.g., `Meslo.zip`)
-3. Extract and install the font files
-4. Configure your terminal to use the installed Nerd Font
-
-#### Terminal Configuration
-After installing a Nerd Font, configure your terminal application:
-
-- **iTerm2**: Preferences → Profiles → Text → Font
-- **Terminal.app**: Preferences → Profiles → Font
-- **VS Code Terminal**: Settings → Terminal › Integrated: Font Family
-- **Cursor Terminal**: Settings → Terminal › Integrated: Font Family
-
-Set the font to your installed Nerd Font (e.g., "MesloLGS Nerd Font").
+- **Installation**: Download and install any Nerd Font from [github.com/ryanoasis/nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
+- **Recommended**: MesloLGS NF (specifically recommended by Powerlevel10k)
+- **Configuration**: Set your terminal to use the installed Nerd Font
 
 ## Installation
 
