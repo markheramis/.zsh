@@ -162,3 +162,11 @@ eval "$(fzf --zsh)"
 # See: https://github.com/ajeetdsouza/zoxide
 eval "$(zoxide init --cmd cd zsh)"
 
+# Start tmux automatically in interactive shells
+if [[ -z "$TMUX" && $- == *i* ]]; then
+    # Check if tmux is installed
+    if command -v tmux >/dev/null 2>&1; then
+        # Start a new tmux session or attach to an existing one
+        exec tmux new-session -A -s main
+    fi
+fi

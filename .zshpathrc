@@ -1,31 +1,101 @@
-# Zsh PATH config (.zshpathrc)
-# All PATH changes are centralized here for clarity.
+# ============================================================================
+# ZSH PATH CONFIGURATION FILE (.zshpathrc)
+# ============================================================================
+# This file contains all PATH-related configurations for the Zsh shell.
+# It's sourced from .zshrc to maintain clean separation of concerns.
+# 
+# Purpose:
+# - Centralize all PATH modifications in one location
+# - Make it easy to manage development tool paths
+# - Allow for environment-specific PATH configurations
+# - Improve maintainability of shell configuration
+# ============================================================================
 
-# --- Homebrew setup (must be first) ---
+# ============================================================================
+# HOMEBREW ENVIRONMENT SETUP
+# ============================================================================
+# Load Homebrew environment variables and PATH modifications first.
+# This is critical as many other tools depend on Homebrew-installed packages.
+# Homebrew modifies PATH, MANPATH, and sets up other environment variables.
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# --- Development tools (higher = higher priority) ---
-# Cursor IDE CLI
+# ============================================================================
+# DEVELOPMENT TOOLS PATH CONFIGURATION
+# ============================================================================
+# Add various development tools to PATH in order of preference.
+# Tools added later take precedence over earlier entries.
+
+# Add Cursor IDE CLI tools to PATH
+# Purpose: Enables 'cursor' command to open files/directories in Cursor IDE
+# Usage: cursor . (opens current directory), cursor file.txt (opens file)
+# Location: Standard macOS application CLI tools location
 export PATH="/Applications/Cursor.app/Contents/Resources/app/bin:$PATH"
-# Ollama AI CLI
+
+# Add Ollama AI CLI to PATH
+# Purpose: Provides 'ollama' command for local LLM interaction and management
+# Usage: ollama run llama2, ollama list, ollama pull model-name
+# Features: Run local AI models, manage model downloads, chat interface
 export PATH="/Applications/Ollama.app/Contents/Resources:$PATH"
 
-# --- Programming language runtimes ---
-# PHP 8.3 (Homebrew)
+# ============================================================================
+# PROGRAMMING LANGUAGE RUNTIMES
+# ============================================================================
+# Configure paths for specific programming language versions.
+# These typically override system-provided versions with more recent ones.
+
+# Add PHP 8.3 to PATH (Homebrew installation)
+# Purpose: Ensures PHP 8.3 takes precedence over macOS system PHP
+# Benefits: Access to latest PHP features, better performance, security updates
+# Location: Homebrew Cellar installation path for PHP 8.3.24
 export PATH="/opt/homebrew/Cellar/php@8.3/8.3.24/bin:$PATH"
 
 # --- Debugging (uncomment to use) ---
+# Created by `pipx` on 2025-09-04 11:57:04
+export PATH="$PATH:/Users/markheramis/.local/bin"
+
+# ============================================================================
+# PATH VERIFICATION & DEBUGGING
+# ============================================================================
+# Uncomment the following lines for PATH debugging and verification:
 # echo "PATH loaded from .zshpathrc"
 # echo "Current PATH: $PATH"
 
-# --- Notes for future additions ---
-# - Add preferred tools last for higher priority
-# - Group related tools
-# - Use clear comments
-# - Test in new shell
-# Examples: nvm, pyenv, rbenv, cargo, aws, etc.
+# ============================================================================
+# NOTES FOR FUTURE ADDITIONS
+# ============================================================================
+# When adding new PATH entries:
+# 1. Add more specific/preferred tools later in this file (higher precedence)
+# 2. Group related tools together (e.g., all Node.js tools, all Python tools)
+# 3. Include detailed comments explaining the purpose and usage
+# 4. Consider version-specific paths vs. generic symlinks
+# 5. Test PATH modifications in a new shell session
+# 
+# Common development tools to consider adding:
+# - Node.js/npm version managers (nvm, volta, fnm)
+# - Python version managers (pyenv, poetry)
+# - Ruby version managers (rbenv, rvm)
+# - Go workspace and toolchain
+# - Rust toolchain (cargo)
+# - Database CLI tools (postgres, mysql, redis)
+# - Cloud CLI tools (aws, gcloud, azure)
+# ============================================================================
 
-# --- Aliases ---
-alias ls='ls --color'      # colored ls
-alias python='python3'     # python = python3
-alias pip='pip3'           # pip = pip3
+# ============================================================================
+# ALIASES
+# ============================================================================
+# Define command aliases for frequently used operations and enhanced functionality.
+# These shortcuts improve productivity and provide consistent behavior across systems.
+
+# Enhanced ls with color output
+# Provides colored file listings for better visual distinction
+alias ls='ls --color'
+
+# Python alias to use python3 as default python command
+# Modern Python installations only provide python3, not python
+alias python='python3'
+
+# Pip alias to use pip3 as default pip command
+# Modern Python installations only provide pip3, not pip
+alias pip='pip3'
+
+
