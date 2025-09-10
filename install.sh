@@ -1,5 +1,10 @@
 if [ -f ~/.zshrc ]; then
-  mv ~/.zshrc ~/.zshrc.bak
+  mv $HOME/.zshrc $HOME/.zshrc.bak
 fi
-ln -s .zshrc ~/.zshrc
-ln -s .zshpathrc ~/.zshpathrc
+
+if [ -f ~/.zshpathrc ]; then
+  mv $HOME/.zshpathrc $HOME/.zshpathrc.bak
+fi
+
+ln -s $(pwd)/.zshrc $HOME/.zshrc
+cp $(pwd)/.zshpathrc $HOME/.zshpathrc
