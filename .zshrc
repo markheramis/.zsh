@@ -151,7 +151,7 @@ bindkey -e
 # These work with the autosuggestions plugin for intelligent history navigation
 bindkey '^p' history-search-backward    # Ctrl+P: Search backward through history
 bindkey '^n' history-search-forward     # Ctrl+N: Search forward through history
-
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # Initialize FZF (Fuzzy Finder) integration
 # Provides Ctrl+R for fuzzy history search, Ctrl+T for fuzzy file search
 eval "$(fzf --zsh)"
@@ -161,12 +161,3 @@ eval "$(fzf --zsh)"
 # Usage: 'cd keyword' jumps to most relevant directory containing keyword
 # See: https://github.com/ajeetdsouza/zoxide
 eval "$(zoxide init --cmd cd zsh)"
-
-# Start tmux automatically in interactive shells
-if [[ -z "$TMUX" && $- == *i* ]]; then
-    # Check if tmux is installed
-    if command -v tmux >/dev/null 2>&1; then
-        # Start a new tmux session or attach to an existing one
-        exec tmux new-session -A -s main
-    fi
-fi
