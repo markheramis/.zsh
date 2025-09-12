@@ -30,8 +30,13 @@ fi
 # Contains all PATH modifications, development tools, and runtime configurations
 if [[ -f ~/.zshpathrc ]]; then
   source ~/.zshpathrc
-else
-  echo "Warning: .zshpathrc not found. PATH may not be properly configured."
+fi
+
+if [[ -f ~/.zsh-path ]]; then
+  source ~/.zsh-path
+fi
+if [[ -f ~/.zsh-alias ]]; then
+    source ~/.zsh-alias
 fi
 
 # ============================================================================
