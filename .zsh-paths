@@ -1,0 +1,61 @@
+# ============================================================================
+# DEVELOPMENT TOOLS PATH CONFIGURATION
+# ============================================================================
+# Add various development tools to PATH in order of preference.
+# Tools added later take precedence over earlier entries.
+
+# Add Cursor IDE CLI tools to PATH
+# Purpose: Enables 'cursor' command to open files/directories in Cursor IDE
+# Usage: cursor . (opens current directory), cursor file.txt (opens file)
+# Location: Standard macOS application CLI tools location
+export PATH="/Applications/Cursor.app/Contents/Resources/app/bin:$PATH"
+
+# Add Ollama AI CLI to PATH
+# Purpose: Provides 'ollama' command for local LLM interaction and management
+# Usage: ollama run llama2, ollama list, ollama pull model-name
+# Features: Run local AI models, manage model downloads, chat interface
+export PATH="/Applications/Ollama.app/Contents/Resources:$PATH"
+
+# ============================================================================
+# PROGRAMMING LANGUAGE RUNTIMES
+# ============================================================================
+# Configure paths for specific programming language versions.
+# These typically override system-provided versions with more recent ones.
+
+# Add PHP 8.3 to PATH (Homebrew installation)
+# Purpose: Ensures PHP 8.3 takes precedence over macOS system PHP
+# Benefits: Access to latest PHP features, better performance, security updates
+# Location: Homebrew Cellar installation path for PHP 8.3.24
+export PATH="/opt/homebrew/Cellar/php@8.3/8.3.24/bin:$PATH"
+
+# --- Debugging (uncomment to use) ---
+# Created by `pipx` on 2025-09-04 11:57:04
+export PATH="$PATH:/Users/markheramis/.local/bin"
+
+# ============================================================================
+# ENHANCED NAVIGATION TOOLS
+# ============================================================================
+# Initialize advanced navigation and search tools that enhance shell capabilities.
+# These tools provide intelligent file searching and directory navigation.
+
+# Initialize FZF (Fuzzy Finder) integration
+# Provides Ctrl+R for fuzzy history search, Ctrl+T for fuzzy file search
+# Must be loaded after FZF is available in PATH
+if command -v fzf >/dev/null 2>&1; then
+  # Load FZF shell integration if available
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+  # Initialize FZF with Zsh integration
+  eval "$(fzf --zsh)"
+else
+  echo "Warning: FZF not found in PATH. Fuzzy finder functionality will not be available."
+fi
+
+# Initialize Zoxide (smart cd replacement)
+# Replaces 'cd' command with intelligent directory jumping based on frecency
+# Usage: 'cd keyword' jumps to most relevant directory containing keyword
+# See: https://github.com/ajeetdsouza/zoxide
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init --cmd cd zsh)"
+else
+  echo "Warning: Zoxide not found in PATH. Smart directory navigation will not be available."
+fi

@@ -1,0 +1,25 @@
+# ============================================================================
+# HOMEBREW ENV SETUP
+# ============================================================================
+# Load Homebrew env and PATH first for tool compatibility.
+# Works for both Intel and Apple Silicon Macs; skips if Homebrew not found.
+
+if command -v brew >/dev/null 2>&1; then
+  # Get brew path and eval its shellenv
+  BREW_PATH="$(command -v brew)"
+  eval "$("$BREW_PATH" shellenv)"
+fi
+
+
+# ============================================================================
+# RUST ENVIRONMENT SETUP
+# ============================================================================
+# Load Rust environment variables if Rust is installed.
+# This ensures cargo and rustup are available in the shell.
+# Only source if the ~/.cargo/env file exists; otherwise, warn the user.
+
+if [ -f "$HOME/.cargo/env" ]; then
+  source "$HOME/.cargo/env"
+else
+  echo "Warning: Rust environment file ~/.cargo/env not found. Rust tools may not be available."
+fi

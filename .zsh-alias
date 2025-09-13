@@ -1,0 +1,37 @@
+# ============================================================================
+# ALIASES AND KEYBINDINGS
+# ============================================================================
+# Define command aliases and key bindings for enhanced command-line experience.
+# These shortcuts improve productivity and provide consistent behavior across systems.
+
+# ============================================================================
+# COMMAND ALIASES
+# ============================================================================
+# Define command aliases for frequently used operations and enhanced functionality.
+
+# Enhanced ls with color output
+# Provides colored file listings for better visual distinction
+alias ls='ls --color'
+
+# Python alias to use python3 as default python command
+# Modern Python installations only provide python3, not python
+alias python='python3'
+
+# Pip alias to use pip3 as default pip command
+# Modern Python installations only provide pip3, not pip
+alias pip='pip3'
+
+# ============================================================================
+# KEYBINDINGS
+# ============================================================================
+# Configure key bindings for enhanced command-line navigation and editing.
+# Uses Emacs-style bindings with custom additions for history search.
+
+# Use Emacs key bindings (as opposed to Vi mode)
+# Provides familiar Ctrl+A (beginning), Ctrl+E (end), etc.
+bindkey -e
+
+# Enhanced history search bindings
+# These work with the autosuggestions plugin for intelligent history navigation
+bindkey '^p' history-search-backward    # Ctrl+P: Search backward through history
+bindkey '^n' history-search-forward     # Ctrl+N: Search forward through history

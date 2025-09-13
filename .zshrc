@@ -20,18 +20,30 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # ============================================================================
-# PATH CONFIGURATION
+# ENVIRONMENT, PATH, AND ALIAS CONFIGURATION
 # ============================================================================
-# Load all PATH-related configurations from a separate file for better organization.
-# This keeps PATH management centralized and makes it easier to maintain
-# development tool configurations across different environments.
+# Load environment variables, PATH modifications, and command aliases
+# from dedicated files for better organization and maintainability.
 
-# Source PATH configuration file
-# Contains all PATH modifications, development tools, and runtime configurations
-if [[ -f ~/.zshpathrc ]]; then
-  source ~/.zshpathrc
+# Source environment variable definitions
+if [[ -f ~/.zsh-envs ]]; then
+  source ~/.zsh-envs
 else
-  echo "Warning: .zshpathrc not found. PATH may not be properly configured."
+  echo "Warning: .zsh-envs not found. Environment variables may not be set."
+fi
+
+# Source PATH configuration
+if [[ -f ~/.zsh-paths ]]; then
+  source ~/.zsh-paths
+else
+  echo "Warning: .zsh-paths not found. PATH may not be properly configured."
+fi
+
+# Source command aliases
+if [[ -f ~/.zsh-alias ]]; then
+  source ~/.zsh-alias
+else
+  echo "Warning: .zsh-alias not found. Aliases may not be available."
 fi
 
 # ============================================================================
@@ -137,27 +149,3 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 # Shows directory contents when using zoxide navigation
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-# ============================================================================
-# KEYBINDINGS
-# ============================================================================
-# Configure key bindings for enhanced command-line navigation and editing.
-# Uses Emacs-style bindings with custom additions for history search.
-
-# Use Emacs key bindings (as opposed to Vi mode)
-# Provides familiar Ctrl+A (beginning), Ctrl+E (end), etc.
-bindkey -e
-
-# Enhanced history search bindings
-# These work with the autosuggestions plugin for intelligent history navigation
-bindkey '^p' history-search-backward    # Ctrl+P: Search backward through history
-bindkey '^n' history-search-forward     # Ctrl+N: Search forward through history
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# Initialize FZF (Fuzzy Finder) integration
-# Provides Ctrl+R for fuzzy history search, Ctrl+T for fuzzy file search
-eval "$(fzf --zsh)"
-
-# Initialize Zoxide (smart cd replacement)
-# Replaces 'cd' command with intelligent directory jumping based on frecency
-# Usage: 'cd keyword' jumps to most relevant directory containing keyword
-# See: https://github.com/ajeetdsouza/zoxide
-eval "$(zoxide init --cmd cd zsh)"
