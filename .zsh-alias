@@ -21,6 +21,13 @@ alias python='python3'
 # Modern Python installations only provide pip3, not pip
 alias pip='pip3'
 
+# Alias eza as ls if eza exists
+# Provides a more modern and feature-rich ls alternative
+# @see https://github.com/eza-community/eza
+if command -v eza >/dev/null 2>&1; then
+  alias ls='eza'
+fi
+
 # ============================================================================
 # KEYBINDINGS
 # ============================================================================
