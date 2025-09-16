@@ -4,6 +4,10 @@
 # Add local bin path to PATH
 export PATH="$PATH:$HOME/.local/bin"
 
+# Add go bin path to PATH ~/go/bin exists
+if [ -d "$HOME/go/bin" ]; then
+  export PATH="$PATH:$HOME/go/bin"
+fi
 
 # ============================================================================
 # NAVIGATION TOOLS
