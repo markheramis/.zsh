@@ -23,3 +23,12 @@ if [ -f "$HOME/.cargo/env" ]; then
 else
   echo "Warning: Rust environment file ~/.cargo/env not found. Rust tools may not be available."
 fi
+
+# Set OLLAMA_MODELS environment variable to the path of the models directory
+export OLLAMA_MODELS="/mnt/Data/ollama/models"
+
+if [ -d "$HOME/.nvm" ]; then
+export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
