@@ -1,0 +1,24 @@
+# ============================================================================
+# LOCAL BIN PATH CONFIGURATION
+# ============================================================================
+# Add local bin path to PATH
+export PATH="$PATH:$HOME/.local/bin"
+
+
+# ============================================================================
+# NAVIGATION TOOLS
+# ============================================================================
+# Enable FZF (fuzzy finder) and Zoxide (smart cd) if available.
+
+# Load FZF shell integration if available
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Initialize FZF with Zsh integration
+# Provides Ctrl+R for fuzzy history search, Ctrl+T for fuzzy file search
+# Must be loaded after FZF is available in PATH
+eval "$(fzf --zsh)"
+
+# Initialize Zoxide (smart cd replacement)
+# Replaces 'cd' command with intelligent directory jumping based on frecency
+# See: https://github.com/ajeetdsouza/zoxide
+eval "$(zoxide init --cmd cd zsh)"
