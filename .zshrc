@@ -26,6 +26,12 @@ fi
 # from dedicated files for better organization and maintainability.
 
 # Source environment variable definitions
+if [[ -f ~/.zsh-setup ]]; then
+  source ~/.zsh-setup
+else
+  echo "Warning: .zsh-setup not found. Setup may not be properly configured."
+fi
+
 if [[ -f ~/.zsh-envs ]]; then
   source ~/.zsh-envs
 else
@@ -149,3 +155,5 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 # Shows directory contents when using zoxide navigation
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
