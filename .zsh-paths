@@ -2,7 +2,9 @@
 # LOCAL BIN PATH CONFIGURATION
 # ============================================================================
 # Add local bin path to PATH
-export PATH="$PATH:$HOME/.local/bin"
+if [ -d "$HOME/.local/bin" ]; then
+  export PATH="$PATH:$HOME/.local/bin"
+fi
 
 # Add go bin path to PATH ~/go/bin exists
 if [ -d "$HOME/go/bin" ]; then
