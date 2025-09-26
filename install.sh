@@ -17,4 +17,5 @@ fi
 ln -s $(pwd)/.zsh-envs $HOME/.zsh-envs
 ln -s $(pwd)/.zsh-paths $HOME/.zsh-paths
 ln -s $(pwd)/.zsh-alias $HOME/.zsh-alias
+ln -s $(pwd)/.zsh-keybindings $HOME/.zsh-keybindings
 ln -s $(pwd)/.zshrc $HOME/.zshrc
