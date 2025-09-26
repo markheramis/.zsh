@@ -47,6 +47,13 @@ else
   echo "Warning: .zsh-alias not found. Aliases may not be available."
 fi
 
+# Source key bindings
+if [[ -f ~/.zsh-keybindings ]]; then
+  source ~/.zsh-keybindings
+else
+  echo "Warning: .zsh-keybindings not found. Key bindings may not be available."
+fi
+
 # ============================================================================
 # PLUGIN MANAGER SETUP (ZINIT)
 # ============================================================================
